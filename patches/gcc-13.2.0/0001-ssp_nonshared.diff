@@ -1,0 +1,14 @@
+Index: gcc-13.2.0.orig/gcc/gcc.cc
+===================================================================
+--- gcc-13.2.0.orig.orig/gcc/gcc.cc
++++ gcc-13.2.0.orig/gcc/gcc.cc
+@@ -974,7 +974,8 @@ proper position among the other output f
+ #ifndef LINK_SSP_SPEC
+ #ifdef TARGET_LIBC_PROVIDES_SSP
+ #define LINK_SSP_SPEC "%{fstack-protector|fstack-protector-all" \
+-		       "|fstack-protector-strong|fstack-protector-explicit:}"
++		       "|fstack-protector-strong|fstack-protector-explicit" \
++		       ":-lssp_nonshared}"
+ #else
+ #define LINK_SSP_SPEC "%{fstack-protector|fstack-protector-all" \
+ 		       "|fstack-protector-strong|fstack-protector-explicit" \
